@@ -1,11 +1,14 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('test6.jpg')
+img = cv2.imread('../image/test6.jpg')
 lower = cv2.pyrDown(img)
 lower1 = cv2.pyrDown(lower)
 higher = cv2.pyrUp(lower1)
 higher1 = cv2.pyrUp(higher)
+laplace = cv2.subtract(img, highter1)
+
+
 
 while(1):
     cv2.imshow('src', img)

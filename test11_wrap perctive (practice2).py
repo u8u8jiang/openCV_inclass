@@ -25,7 +25,8 @@ while(1):
 cv2.destroyAllWindows()
 
 M = cv2.getPerspectiveTransform(pts1, pts2)  # 生成透视矩阵
-dst = cv2.warpPerspective(img, M, (352, 500)) # 转换
+# dst = cv2.warpPerspective(img, M, (352, 500)) # 转换
+dst = cv2.warpPerspective(img, M, (400, 500)) 
 dst1 = cv2.cvtColor(dst,cv2.COLOR_BGR2RGB)
 
 plt.subplot(121), plt.imshow(img), plt.title('Input')

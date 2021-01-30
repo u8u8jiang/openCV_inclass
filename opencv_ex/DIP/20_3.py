@@ -13,17 +13,17 @@ G = A.copy()
 gpA = [G]
 for i in range(6):
     G = cv2.pyrDown(G)
-    gpA.append(G)
+    gpA.append(G)  #array
 
 # 将橘子进行高斯金字塔处理，总共六级处理
 G = B.copy()
 gpB = [G]
-for i in range(6):
+for i in range(6):  #down 6-level
     G = cv2.pyrDown(G)
     gpB.append(G)
 
 # 将苹果进行拉普拉斯金字塔处理，总共5级处理
-lpA = [gpA[5]]
+lpA = [gpA[5]]  #up 5-level
 for i in range(5, 0, -1):
     GE = cv2.pyrUp(gpA[i])
     L = cv2.subtract(gpA[i-1], GE)
@@ -38,7 +38,7 @@ for i in range(5, 0, -1):
 
 # 将两个图像的矩阵的左半部分和右半部分拼接到一起
 LS = []
-for la, lb in zip(lpA, lpB):
+for la, lb in zip(lpA, lpB):   #combine
     rows, cols, dpt = la.shape
     ls = np.hstack((la[:, 0:cols//2], lb[:, cols//2:]))
     LS.append(ls)
@@ -46,7 +46,7 @@ for la, lb in zip(lpA, lpB):
 # 采用金字塔拼接方法的图像
 ls_ = LS[0]  # 这里LS[0]为高斯金字塔的最小图片
 for i in range(1, 6):  # 第一次循环的图像为高斯金字塔的最小图片，依次通过拉普拉斯金字塔恢复到大图像
-    ls_ = cv2.pyrUp(ls_)
+    ls_ = cv2.pyrUp(ls_)    #reset
     ls_ = cv2.add(ls_, LS[i])
 
 # 直接拼接

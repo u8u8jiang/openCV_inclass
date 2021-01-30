@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('test1.jpg')
+img = cv2.imread('../image/test1.jpg')
 img = cv2.bilateralFilter(img, 13, 70, 50)  # 滤波降噪
 box_roi = cv2.selectROI("roi", img)  # 选择roi区域
 # 提取ROI图像
@@ -9,6 +9,7 @@ roi_img = img[box_roi[1]:box_roi[1]+box_roi[3],
              box_roi[0]:box_roi[0]+box_roi[2], :]
 hsv1 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 hsv2 = cv2.cvtColor(roi_img, cv2.COLOR_BGR2HSV)
+# get histogram of ROI
 hist1 = cv2.calcHist([hsv1], [0, 1], None, [180, 256], [0, 180, 0, 256])
 hist2 = cv2.calcHist([hsv2], [0, 1], None, [180, 256], [0, 180, 0, 256])
 
@@ -40,7 +41,7 @@ cv2.imshow('Numpy', res)
 # cv2.normalize(hist2, hist2, 0, 255, cv2.NORM_MINMAX)
 dst = cv2.calcBackProject([hsv1], [0, 1], hist2, [0, 180, 0, 256], 1)
 disc = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-cv2.filter2D(dst, -1, disc, dst)
+cv2.filter2D(dst, -1, disc, dst)   #filter2D
 out = cv2.merge([dst, dst, dst]) & img
 cv2.imshow('OpenCV', out)
 cv2.waitKey(0)

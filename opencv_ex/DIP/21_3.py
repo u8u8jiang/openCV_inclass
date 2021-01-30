@@ -4,11 +4,12 @@ from matplotlib import pyplot as plt
 
 font = cv2.FONT_HERSHEY_SIMPLEX  # 设置字体样式
 
-img = cv2.imread('test21_3.jpg')
+img = cv2.imread('../image/test21_3.jpg')
 imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 ret, thresh = cv2.threshold(imgray, 127, 255, 0)
-image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 cnt = contours[0]
+print(len(cnt))
 
 # 极点
 img0 = img.copy()
@@ -57,7 +58,7 @@ text2 = 'Rect Area: ' + str(area)
 cv2.putText(img2, text1, (10, 30), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA, 0)
 cv2.putText(img2, text2, (10, 60), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA, 0)
 
-# 圆拟合
+# 圆拟合 外接近似圓
 img3 = img.copy()
 (x, y), radius = cv2.minEnclosingCircle(cnt)
 center = (int(x), int(y))
