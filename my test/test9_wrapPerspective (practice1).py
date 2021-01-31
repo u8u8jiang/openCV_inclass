@@ -9,6 +9,7 @@ def savexy(event, x,y,flags,param):
     global i
     if event == cv2.EVENT_LBUTTONDBLCLK:
         print(x,y)
+        cv2.circle(img,((x,y)),3,(0,255,0),3)
         pts1[i] = [x,y]
         i+=1
 img = cv2.imread('pokman.jpg')

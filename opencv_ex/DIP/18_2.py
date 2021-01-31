@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img1 = cv2.imread('test8.jpg', 0)
-img2 = cv2.imread('test19.jpg', 0)
+img1 = cv2.imread('../image/test8.jpg', 0)
+img2 = cv2.imread('../image/test19.jpg', 0)
 
 sobelx8u1 = cv2.Sobel(img1, cv2.CV_8U, 1, 0, ksize=5)
 sobelx64f1 = cv2.Sobel(img1, cv2.CV_64F, 1, 0, ksize=5)
