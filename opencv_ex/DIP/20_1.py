@@ -8,8 +8,6 @@ higher = cv2.pyrUp(lower1)
 higher1 = cv2.pyrUp(higher)
 laplace = cv2.subtract(img, highter1)
 
-
-
 while(1):
     cv2.imshow('src', img)
     cv2.imshow('lower', lower)

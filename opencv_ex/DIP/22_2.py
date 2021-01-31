@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('test22.jpg', 0)
+img = cv2.imread('../image/test22.jpg', 0)
 # flatten() 将数组变成一维
 hist, bins = np.histogram(img.flatten(), 256, [0, 256])
 # 计算累积分布图

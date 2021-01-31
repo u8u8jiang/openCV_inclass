@@ -5,8 +5,8 @@ from matplotlib import pyplot as plt
 # 图像尺寸最好是2的整次幂，如256,512等
 # 否则在金字塔向上的过程中图像的尺寸会不等
 # 这会导致在拉普拉斯金字塔处理时由于不同尺寸矩阵相减而出错
-A = cv2.imread('apple.jpg')
-B = cv2.imread('orange.jpg')
+A = cv2.imread('../image/apple.jpg')
+B = cv2.imread('../image/orange.jpg')
 
 # 将苹果进行高斯金字塔处理，总共六级处理
 G = A.copy()

@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 # 图像尺寸最好是2的整次幂，如256,512等
 # 否则在金字塔向上的过程中图像的尺寸会不等
 # 这会导致在拉普拉斯金字塔处理时由于不同尺寸矩阵相减而出错
-img = cv2.imread('test6.jpg')
+img = cv2.imread('../image/test6.jpg')
 lower = cv2.pyrDown(img)
 lower1 = cv2.pyrDown(lower)
 higher = cv2.pyrUp(lower1)
