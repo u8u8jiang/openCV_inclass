@@ -3,7 +3,7 @@ import cv2
 import imutils
 
 # 讀取照片圖檔
-img = cv2.imread('youngpoint.jpg')
+img = cv2.imread("C:\\Users\she84\Desktop\openCV_inclass_20210128to30\exercise\youngpoint.jpg")
 
 # 縮小圖片
 #img = imutils.resize(img, width=1280)
@@ -12,7 +12,7 @@ img = cv2.imread('youngpoint.jpg')
 detector = dlib.get_frontal_face_detector()
 
 # 偵測人臉
-face_rects = detector(img, 0)
+face_rects = detector(img)
 
 # 取出所有偵測的結果
 for i, d in enumerate(face_rects):

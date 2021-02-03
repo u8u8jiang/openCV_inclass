@@ -4,7 +4,7 @@ import dlib
 
 detector = dlib.get_frontal_face_detector()
 landmark_predictor = dlib.shape_predictor('a.dat')
-img = cv2.imread('youngpoint.jpg')
+img = cv2.imread('people1.jpg')
 
 faces = detector(img,0)
 if (len(faces) > 0):
